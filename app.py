@@ -11,9 +11,27 @@ users = {
 }
 
 books = [
-    {"id": 1, "title": "1984", "author": "George Orwell", "price": 9.99},
-    {"id": 2, "title": "To Kill a Mockingbird", "author": "Harper Lee", "price": 12.99},
-    {"id": 3, "title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "price": 10.50},
+    {
+        "id": 1,
+        "title": "1984",
+        "author": "George Orwell",
+        "price": 9.99,
+        "image": "https://covers.openlibrary.org/b/isbn/0451524934-L.jpg",
+    },
+    {
+        "id": 2,
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "price": 12.99,
+        "image": "https://covers.openlibrary.org/b/isbn/9780061120084-L.jpg",
+    },
+    {
+        "id": 3,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "price": 10.50,
+        "image": "https://covers.openlibrary.org/b/isbn/9780743273565-L.jpg",
+    },
 ]
 
 
