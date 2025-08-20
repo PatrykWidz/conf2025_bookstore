@@ -176,13 +176,49 @@ def view_cart():
                 total=total,
                 message=None,
                 error="Ups, something went wrong",
+                feedback_submitted=False,
             )
         session["cart"] = []
         return render_template(
-            "cart.html", cart=[], total=0, message="Order placed successfully!", error=None
+            "cart.html",
+            cart=[],
+            total=0,
+            message="Order placed successfully!",
+            error=None,
+            feedback_submitted=False,
         )
     total = sum(item["price"] * item["quantity"] for item in cart)
-    return render_template("cart.html", cart=cart, total=total, message=None, error=None)
+    return render_template(
+        "cart.html", cart=cart, total=total, message=None, error=None, feedback_submitted=False
+    )
+
+
+@app.post("/rate")
+@login_required
+def rate():
+    rating = int(request.form.get("rating", 0))
+    session.setdefault("ratings", []).append(rating)
+    return render_template(
+        "cart.html",
+        cart=[],
+        total=0,
+        message="Thank you for your feedback!",
+        error=None,
+        feedback_submitted=True,
+    )
+
+
+@app.route("/report", methods=["GET", "POST"])
+@login_required
+def report():
+    submitted = False
+    if request.method == "POST":
+        description = request.form.get("description")
+        session.setdefault("reports", []).append(
+            {"user": session.get("username"), "description": description}
+        )
+        submitted = True
+    return render_template("report.html", submitted=submitted)
 
 
 if __name__ == "__main__":
