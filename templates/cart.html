@@ -17,6 +17,8 @@
     <h1 class="mb-4">Your Cart</h1>
     {% if message %}
         <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% elif error %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
     {% else %}
         {% if cart %}
             <ul class="list-group mb-3">
