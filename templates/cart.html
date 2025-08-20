@@ -33,6 +33,11 @@
             margin: 1rem auto;
             text-align: center;
         }
+        .report-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -70,7 +75,7 @@
             </form>
         </section>
         {% endif %}
-        <a href="{{ url_for('report') }}" class="btn btn-link mt-3">Report a problem</a>
+        <a href="{{ url_for('report') }}" class="btn btn-danger report-button">Report a problem</a>
     {% else %}
         {% if cart %}
             <ul class="list-group mb-3">
