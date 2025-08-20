@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <title>Books</title>
+</head>
+<body>
+<h1>Available Books</h1>
+<p>Logged in as {{ session['username'] }}</p>
+<p>
+    <a href="{{ url_for('view_cart') }}">View Cart ({{ session['cart']|length }})</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+</p>
+<ul>
+    {% for book in books %}
+        <li>
+            {{ book.title }} by {{ book.author }} - ${{ '%.2f'|format(book.price) }}
+            <form action="{{ url_for('add_to_cart', book_id=book.id) }}" method="post" style="display:inline;">
+                <input type="submit" value="Add to cart">
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
