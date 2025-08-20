@@ -1,4 +1,5 @@
 from functools import wraps
+import time
 from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
@@ -166,10 +167,22 @@ def update_cart(book_id, action):
 def view_cart():
     cart = session.setdefault("cart", [])
     if request.method == "POST":
+        if any(item["title"] == "Observability Engineering" for item in cart):
+            time.sleep(10)
+            total = sum(item["price"] * item["quantity"] for item in cart)
+            return render_template(
+                "cart.html",
+                cart=cart,
+                total=total,
+                message=None,
+                error="Ups, something went wrong",
+            )
         session["cart"] = []
-        return render_template("cart.html", cart=[], total=0, message="Order placed successfully!")
+        return render_template(
+            "cart.html", cart=[], total=0, message="Order placed successfully!", error=None
+        )
     total = sum(item["price"] * item["quantity"] for item in cart)
-    return render_template("cart.html", cart=cart, total=total, message=None)
+    return render_template("cart.html", cart=cart, total=total, message=None, error=None)
 
 
 if __name__ == "__main__":
