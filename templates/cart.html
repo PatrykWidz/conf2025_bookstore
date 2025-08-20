@@ -10,6 +10,8 @@
             direction: rtl;
             unicode-bidi: bidi-override;
             font-size: 2rem;
+            display: flex;
+            justify-content: center;
         }
         .rating input {
             display: none;
@@ -22,6 +24,14 @@
         .rating label:hover,
         .rating label:hover ~ label {
             color: #f5c518;
+        }
+        .rating-section {
+            border: 1px solid #dee2e6;
+            border-radius: .25rem;
+            padding: 1rem;
+            max-width: 400px;
+            margin: 1rem auto;
+            text-align: center;
         }
     </style>
 </head>
@@ -41,10 +51,10 @@
     {% endif %}
     {% if message or error %}
         {% if not feedback_submitted %}
-        <div class="mt-4">
-            <h5>Rate your experience:</h5>
-            <form action="{{ url_for('rate') }}" method="post">
-                <div class="rating">
+        <section class="rating-section">
+            <h5 class="mb-3">Rate your experience:</h5>
+            <form action="{{ url_for('rate') }}" method="post" class="d-flex flex-column align-items-center">
+                <div class="rating mb-2">
                     <input type="radio" id="star5" name="rating" value="5" required>
                     <label for="star5">★</label>
                     <input type="radio" id="star4" name="rating" value="4">
@@ -58,7 +68,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary mt-2">Submit Rating</button>
             </form>
-        </div>
+        </section>
         {% endif %}
         <a href="{{ url_for('report') }}" class="btn btn-link mt-3">Report a problem</a>
     {% else %}
