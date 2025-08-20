@@ -78,9 +78,38 @@ def add_to_cart(book_id):
     cart = session.setdefault("cart", [])
     book = next((b for b in books if b["id"] == book_id), None)
     if book:
-        cart.append(book)
+        item = next((i for i in cart if i["id"] == book_id), None)
+        if item:
+            item["quantity"] += 1
+        else:
+            cart.append({
+                "id": book["id"],
+                "title": book["title"],
+                "author": book["author"],
+                "price": book["price"],
+                "quantity": 1,
+            })
         session["cart"] = cart
     return redirect(url_for("list_books"))
+
+
+@app.post("/cart/update/<int:book_id>/<action>")
+@login_required
+def update_cart(book_id, action):
+    cart = session.setdefault("cart", [])
+    item = next((i for i in cart if i["id"] == book_id), None)
+    if not item:
+        return redirect(url_for("view_cart"))
+    if action == "increase":
+        item["quantity"] += 1
+    elif action == "decrease":
+        item["quantity"] -= 1
+        if item["quantity"] <= 0:
+            cart.remove(item)
+    elif action == "remove":
+        cart.remove(item)
+    session["cart"] = cart
+    return redirect(url_for("view_cart"))
 
 
 @app.route("/cart", methods=["GET", "POST"])
@@ -90,7 +119,7 @@ def view_cart():
     if request.method == "POST":
         session["cart"] = []
         return render_template("cart.html", cart=[], total=0, message="Order placed successfully!")
-    total = sum(item["price"] for item in cart)
+    total = sum(item["price"] * item["quantity"] for item in cart)
     return render_template("cart.html", cart=cart, total=total, message=None)
 
 
