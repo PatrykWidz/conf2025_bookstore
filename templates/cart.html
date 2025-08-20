@@ -50,13 +50,22 @@
             {% endfor %}
             </ul>
             <p class="fw-bold">Total: ${{ '%.2f'|format(total) }}</p>
-            <form method="post">
-                <button type="submit" class="btn btn-success">Finalize Order</button>
+            <form method="post" onsubmit="showLoading()">
+                <button id="finalizeButton" type="submit" class="btn btn-success">Finalize Order</button>
+                <div id="loadingSpinner" class="spinner-border text-success ms-2" role="status" style="display: none;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </form>
         {% else %}
             <p>Your cart is empty.</p>
         {% endif %}
     {% endif %}
 </div>
+<script>
+    function showLoading() {
+        document.getElementById('finalizeButton').style.display = 'none';
+        document.getElementById('loadingSpinner').style.display = 'inline-block';
+    }
+</script>
 </body>
 </html>
