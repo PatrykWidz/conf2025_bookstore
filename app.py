@@ -32,6 +32,55 @@ books = [
         "price": 10.50,
         "image": "https://covers.openlibrary.org/b/isbn/9780743273565-L.jpg",
     },
+    {
+        "id": 4,
+        "title": "Observability Engineering",
+        "author": "Charity Majors, Liz Fong-Jones, George Miranda",
+        "price": 44.99,
+        "image": "https://covers.openlibrary.org/b/isbn/9781492076643-L.jpg",
+    },
+    {
+        "id": 5,
+        "title": "Practical Monitoring",
+        "author": "Mike Julian",
+        "price": 34.99,
+        "image": "https://covers.openlibrary.org/b/isbn/9781491957356-L.jpg",
+    },
+    {
+        "id": 6,
+        "title": "Logging and Log Management",
+        "author": "Anton Chuvakin",
+        "price": 49.99,
+        "image": "https://covers.openlibrary.org/b/isbn/9780123749888-L.jpg",
+    },
+    {
+        "id": 7,
+        "title": "Security Engineering",
+        "author": "Ross Anderson",
+        "price": 59.99,
+        "image": "https://covers.openlibrary.org/b/isbn/9781119642787-L.jpg",
+    },
+    {
+        "id": 8,
+        "title": "Kubernetes Security",
+        "author": "Liz Rice",
+        "price": 39.99,
+        "image": "https://covers.openlibrary.org/b/isbn/9781492081777-L.jpg",
+    },
+    {
+        "id": 9,
+        "title": "Building Secure and Reliable Systems",
+        "author": "Heather Adkins, Betsy Beyer, Paul Blankinship, et al.",
+        "price": 54.99,
+        "image": "https://covers.openlibrary.org/b/isbn/9781492083122-L.jpg",
+    },
+    {
+        "id": 10,
+        "title": "Web Application Security",
+        "author": "Andrew Hoffman",
+        "price": 45.00,
+        "image": "https://covers.openlibrary.org/b/isbn/9781492053118-L.jpg",
+    },
 ]
 
 
