@@ -1,24 +1,31 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Books</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Available Books</h1>
-<p>Logged in as {{ session['username'] }}</p>
-<p>
-    <a href="{{ url_for('view_cart') }}">View Cart ({{ session['cart']|length }})</a> |
-    <a href="{{ url_for('logout') }}">Logout</a>
-</p>
-<ul>
-    {% for book in books %}
-        <li>
-            {{ book.title }} by {{ book.author }} - ${{ '%.2f'|format(book.price) }}
-            <form action="{{ url_for('add_to_cart', book_id=book.id) }}" method="post" style="display:inline;">
-                <input type="submit" value="Add to cart">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <span class="navbar-text me-auto">Logged in as {{ session['username'] }}</span>
+        <a class="btn btn-outline-primary me-2" href="{{ url_for('view_cart') }}">View Cart ({{ session['cart']|length }})</a>
+        <a class="btn btn-outline-secondary" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</nav>
+<div class="container mt-4">
+    <h1 class="mb-4">Available Books</h1>
+    <ul class="list-group">
+        {% for book in books %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ book.title }} by {{ book.author }} - ${{ '%.2f'|format(book.price) }}</span>
+            <form action="{{ url_for('add_to_cart', book_id=book.id) }}" method="post" class="m-0">
+                <button type="submit" class="btn btn-sm btn-primary">Add to cart</button>
             </form>
         </li>
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </ul>
+</div>
 </body>
 </html>
