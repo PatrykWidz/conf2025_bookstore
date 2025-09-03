@@ -108,7 +108,7 @@
             </ul>
             <p class="fw-bold">Total: ${{ '%.2f'|format(total) }}</p>
             <form method="post" onsubmit="showLoading()">
-                <button id="finalizeButton" type="submit" class="btn btn-success">Finalize Order</button>
+                <button id="checkoutButton" type="submit" class="btn btn-success">Checkout</button>
                 <div id="loadingSpinner" class="spinner-border text-success ms-2" role="status" style="display: none;">
                     <span class="visually-hidden">Loading...</span>
                 </div>
@@ -120,7 +120,7 @@
 </div>
 <script>
     function showLoading() {
-        document.getElementById('finalizeButton').style.display = 'none';
+        document.getElementById('checkoutButton').style.display = 'none';
         document.getElementById('loadingSpinner').style.display = 'inline-block';
     }
 </script>
