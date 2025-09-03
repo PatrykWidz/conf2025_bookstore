@@ -1,6 +1,6 @@
 # Conference 2025 Bookstore
 
-This is a very simple Flask-based bookstore demo. Users can log in, browse a list of books, add them to a cart and finalize an order. The application is designed for demonstration purposes only and uses in-memory data structures instead of a database.
+This is a very simple Flask-based bookstore demo. Users can log in, browse a list of books, add them to a cart and checkout. The application is designed for demonstration purposes only and uses in-memory data structures instead of a database.
 
 ## Running locally
 
